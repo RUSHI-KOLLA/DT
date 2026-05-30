@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Leadership Portfolio — PDGMS Career Artifact">
+  <title>Leadership Portfolio — Rajan Iyer | March 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+  <div class="portfolio-shell">
+
+    <!-- ═══ TOP NAV BAR ═══ -->
+    <nav class="top-bar">
+      <button class="nav-arrow" id="prevMonth" aria-label="Previous month">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="nav-center">
+        <span class="nav-label">Leadership Portfolio</span>
+        <span class="nav-month" id="monthLabel">March 2026</span>
+      </div>
+      <button class="nav-arrow" id="nextMonth" aria-label="Next month">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </nav>
+
+    <!-- ═══ SECTION 1: HERO — THE 3-SECOND ANSWER ═══ -->
+    <header class="hero" id="hero">
+      <div class="hero-identity">
+        <div class="avatar" id="avatar">RI</div>
+        <div class="hero-text">
+          <h1 class="hero-name" id="heroName">Rajan Iyer</h1>
+          <p class="hero-role" id="heroRole">Production Planning Lead — Sterile Injectables</p>
+          <p class="hero-org" id="heroOrg">Vayura Lifesciences · Facility 3 Commercialization</p>
+          <p class="hero-signal-text" id="heroSignalText"></p>
+        </div>
+      </div>
+
+      <div class="hero-signal">
+        <div class="score-ring" id="scoreRing">
+          <svg viewBox="0 0 120 120" class="ring-svg">
+            <circle cx="60" cy="60" r="52" class="ring-track"/>
+            <circle cx="60" cy="60" r="52" class="ring-fill" id="ringFill"/>
+          </svg>
+          <div class="ring-inner">
+            <span class="ring-number" id="ringNumber">71</span>
+            <span class="ring-label">Score</span>
+          </div>
+        </div>
+        <div class="signal-meta">
+          <div class="pace-badge pace-ahead" id="paceBadge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l5-5 5 5"/><path d="M7 12l5-5 5 5"/></svg>
+            Ahead of Plan
+          </div>
+          <span class="level-badge" id="levelBadge">V2 → V3</span>
+          <span class="delta-text" id="deltaText">+7 from last month</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ SECTION 2: CONTRIBUTION — WHAT DID I SHIP? ═══ -->
+    <section class="card card-delivery" id="sectionDelivery">
+      <div class="card-header">
+        <h2 class="card-title">Delivered</h2>
+        <div class="card-stat-cluster">
+          <span class="big-stat" id="deliveredCount">16</span>
+          <span class="big-stat-of">/ <span id="totalDeliverables">20</span></span>
+        </div>
+      </div>
+
+      <div class="delivery-bar-wrap">
+        <div class="delivery-bar">
+          <div class="delivery-fill" id="deliveryFill" style="width:0%"></div>
+        </div>
+        <div class="delivery-breakdown" id="deliveryBreakdown">
+          <span class="db-chip delivered"><i class="dot"></i>16 Shipped</span>
+          <span class="db-chip in-progress"><i class="dot"></i>2 In Progress</span>
+          <span class="db-chip pending"><i class="dot"></i>1 Awaiting Review</span>
+          <span class="db-chip not-started"><i class="dot"></i>1 Not Started</span>
+        </div>
+      </div>
+
+      <p class="card-narrative" id="narrativeContribution"></p>
+
+      <!-- Collapsible list of what was shipped -->
+      <details class="evidence-toggle">
+        <summary class="evidence-trigger">View all deliverables</summary>
+        <ul class="deliverable-list" id="deliverableList">
+          <!-- JS populated -->
+        </ul>
+      </details>
+    </section>
+
+    <!-- ═══ SECTION 3: ORIGINAL WORK (IP) ═══ -->
+    <section class="card card-ip" id="sectionIP">
+      <div class="card-header">
+        <h2 class="card-title">Original Work</h2>
+        <span class="big-stat" id="ipCount">7</span>
+      </div>
+      <ul class="ip-list" id="ipList">
+        <!-- JS populated -->
+      </ul>
+    </section>
+
+    <!-- ═══ SECTION 4: CAPABILITY — HOW AM I GROWING? ═══ -->
+    <section class="card card-capability" id="sectionCapability">
+      <div class="card-header">
+        <h2 class="card-title">Growth Profile</h2>
+        <span class="card-subtitle">5 capability axes — threshold at 60</span>
+      </div>
+      <div class="axis-grid" id="axisGrid">
+        <!-- JS populated -->
+      </div>
+      <p class="card-narrative" id="narrativeCapability"></p>
+    </section>
+
+    <!-- ═══ SECTION 5: KPI TARGETS ═══ -->
+    <section class="card card-kpi" id="sectionKPI">
+      <div class="card-header">
+        <h2 class="card-title">Targets</h2>
+        <div class="kpi-summary">
+          <span class="kpi-hit" id="kpiHitCount">3</span><span class="kpi-hit-label"> hit</span>
+          <span class="kpi-sep">·</span>
+          <span class="kpi-miss" id="kpiMissCount">2</span><span class="kpi-miss-label"> missed</span>
+        </div>
+      </div>
+      <div class="kpi-rows" id="kpiRows">
+        <!-- JS populated -->
+      </div>
+      <p class="card-narrative" id="narrativeKPI"></p>
+    </section>
+
+    <!-- ═══ SECTION 6: BLOCKERS — WHAT GOT IN THE WAY? ═══ -->
+    <section class="card card-constraints" id="sectionConstraints">
+      <div class="card-header">
+        <h2 class="card-title">Challenges</h2>
+        <div class="constraint-summary">
+          <span class="cs-resolved" id="csResolved">5</span> resolved
+          <span class="kpi-sep">·</span>
+          <span class="cs-open" id="csOpen">3</span> open
+          <span class="kpi-sep">·</span>
+          <span class="cs-rate" id="csRate">62%</span> resolution
+        </div>
+      </div>
+      <div class="constraint-items" id="constraintItems">
+        <!-- JS populated -->
+      </div>
+      <p class="card-narrative" id="narrativeConstraints"></p>
+    </section>
+
+    <!-- ═══ SECTION 7: CAREER TRAJECTORY ═══ -->
+    <section class="card card-career" id="sectionCareer">
+      <div class="card-header">
+        <h2 class="card-title">Career Path</h2>
+      </div>
+      <div class="runway" id="runway">
+        <!-- JS populated -->
+      </div>
+      <div class="career-detail">
+        <div class="career-gap" id="careerGap">
+          <!-- JS populated -->
+        </div>
+      </div>
+      <p class="card-narrative" id="narrativeCareer"></p>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="portfolio-footer">
+      <span class="uid" id="uidLabel">PDGMS-EMP-00512</span>
+      <span class="gen-date" id="genDate">Generated 2 Apr 2026</span>
+    </footer>
+  </div>
+
+  <script src="app.js?v=6"></script>
+</body>
+</html>

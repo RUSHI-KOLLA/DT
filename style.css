@@ -1,0 +1,1019 @@
+/* ═══════════════════════════════════════════
+   LEADERSHIP PORTFOLIO — DESIGN SYSTEM
+   
+   Design Reasoning:
+   - Dark theme: feels premium, reduces visual noise, 
+     makes data "glow" — numbers pop against dark backgrounds
+   - Single column: reads like a document/deck, not a dashboard grid
+   - Big numbers + small labels: scannable in <3 seconds
+   - Progressive disclosure: summary on surface, detail on demand
+   - Muted palette with accent pops: draws eye to what matters
+   ═══════════════════════════════════════════ */
+
+/* ── RESET & BASE ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Surface colors — deep, layered */
+  --bg-base: #0b0e14;
+  --bg-card: #12161f;
+  --bg-card-hover: #171c28;
+  --bg-elevated: #1a2030;
+  --bg-input: #0e1219;
+
+  /* Text */
+  --text-primary: #e8eaf0;
+  --text-secondary: #8b93a7;
+  --text-muted: #555e73;
+  --text-inverse: #0b0e14;
+
+  /* Accent — one primary accent, everything else is neutral */
+  --accent: #6c8aff;
+  --accent-dim: rgba(108, 138, 255, 0.12);
+  --accent-mid: rgba(108, 138, 255, 0.25);
+
+  /* Semantic */
+  --green: #34d399;
+  --green-dim: rgba(52, 211, 153, 0.12);
+  --amber: #fbbf24;
+  --amber-dim: rgba(251, 191, 36, 0.12);
+  --red: #f87171;
+  --red-dim: rgba(248, 113, 113, 0.12);
+  --cyan: #22d3ee;
+
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.06);
+  --border-focus: rgba(108, 138, 255, 0.4);
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-s: 8px;
+  --space-m: 16px;
+  --space-l: 24px;
+  --space-xl: 36px;
+  --space-2xl: 48px;
+
+  /* Typography */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius: 12px;
+  --radius-s: 8px;
+  --radius-xs: 6px;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+
+/* ── LAYOUT SHELL ── */
+.portfolio-shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--space-l) var(--space-xl);
+  padding-bottom: var(--space-2xl);
+}
+
+/* ── TOP NAV ── */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-m) 0;
+  margin-bottom: var(--space-l);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-arrow {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.nav-arrow:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.nav-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.nav-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.nav-month {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+
+/* ═══════════════════════════════════════════
+   HERO — THE 3-SECOND ANSWER
+   
+   Reasoning: This is the most important real estate.
+   The user sees name + score ring + pace badge 
+   and instantly knows: "Who is this, how are they doing,
+   are they on track?" — all without reading a single sentence.
+   ═══════════════════════════════════════════ */
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-l);
+  padding: var(--space-xl) var(--space-l);
+  background: linear-gradient(135deg, var(--bg-card) 0%, #141a28 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-l);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gradient accent glow behind the hero */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(108, 138, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+  flex: 1;
+  min-width: 0;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent-mid);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+.hero-text {
+  min-width: 0;
+}
+
+.hero-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.hero-role {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-org {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.hero-signal-text {
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  margin-top: 10px;
+  line-height: 1.4;
+  border-left: 2px solid var(--accent);
+  padding-left: 10px;
+  font-weight: 500;
+}
+
+/* ── Score Ring ── */
+/* Reasoning: A circular ring is the universal visual for 
+   "percentage/score" — instantly communicates magnitude 
+   without needing any label. The animation draws the eye. */
+
+.hero-signal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-s);
+  flex-shrink: 0;
+}
+
+.score-ring {
+  position: relative;
+  width: 96px;
+  height: 96px;
+}
+
+.ring-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-track {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 6;
+}
+
+.ring-fill {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 326.73;
+  stroke-dashoffset: 326.73;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 8px rgba(108, 138, 255, 0.35));
+}
+
+.ring-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-number {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.ring-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ── Signal Meta ── */
+.signal-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.pace-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.pace-ahead {
+  background: var(--green-dim);
+  color: var(--green);
+}
+.pace-on-track {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+.pace-behind {
+  background: var(--red-dim);
+  color: var(--red);
+}
+
+.level-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.delta-text {
+  font-size: 0.68rem;
+  color: var(--green);
+  font-weight: 500;
+}
+
+
+/* ═══════════════════════════════════════════
+   CARDS — Each section is a card
+   
+   Reasoning: Cards create visual separation.
+   Each card answers ONE question. The card header 
+   always has a title + a big number so you can 
+   scan the page and get the full picture just 
+   from the headers alone without reading anything.
+   ═══════════════════════════════════════════ */
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-l);
+  margin-bottom: var(--space-m);
+  transition: border-color 0.2s;
+}
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-m);
+}
+
+.card-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+.card-subtitle {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.big-stat {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+}
+.big-stat-of {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* ── Card Narrative ──
+   Reasoning: The assignment requires narratives to be "prominent,
+   not an afterthought." Showing them directly (not collapsed) satisfies
+   this, while muted styling keeps numbers scannable first. The left
+   accent border visually separates "story" from "data." */
+.card-narrative {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-top: var(--space-m);
+  padding: var(--space-m);
+  border-left: 2px solid rgba(108, 138, 255, 0.3);
+  background: rgba(108, 138, 255, 0.03);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+}
+.card-narrative:empty {
+  display: none;
+}
+
+
+/* ═══════════════════════════════════════════
+   DELIVERY CARD
+   
+   Reasoning: The most important contribution metric.
+   A single horizontal bar shows completion ratio instantly.
+   Chip breakdown below tells you what state things are in.
+   Detail list is hidden by default — progressive disclosure.
+   ═══════════════════════════════════════════ */
+
+.delivery-bar-wrap {
+  margin-bottom: var(--space-m);
+}
+
+.delivery-bar {
+  height: 8px;
+  background: var(--bg-input);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: var(--space-s);
+}
+
+.delivery-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--green) 100%);
+  border-radius: 100px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.delivery-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+.db-chip {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.db-chip .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.db-chip.delivered .dot { background: var(--green); }
+.db-chip.in-progress .dot { background: var(--accent); }
+.db-chip.pending .dot { background: var(--amber); }
+.db-chip.not-started .dot { background: var(--text-muted); }
+
+
+/* ── Evidence Toggle (Progressive Disclosure) ── */
+.evidence-toggle {
+  margin-top: var(--space-m);
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-m);
+}
+
+.evidence-trigger {
+  font-size: 0.75rem;
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 500;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.evidence-trigger::before {
+  content: '▸';
+  font-size: 0.7rem;
+  transition: transform 0.2s;
+}
+details[open] .evidence-trigger::before {
+  transform: rotate(90deg);
+}
+.evidence-trigger::-webkit-details-marker { display: none; }
+
+.deliverable-list {
+  list-style: none;
+  margin-top: var(--space-m);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.deliverable-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  padding: 8px 12px;
+  background: var(--bg-input);
+  border-radius: var(--radius-xs);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.del-status {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.del-status.delivered { background: var(--green); }
+.del-status.pending_qa { background: var(--amber); }
+.del-status.in_progress { background: var(--accent); }
+.del-status.not_started { background: var(--text-muted); }
+
+.del-label {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* ═══════════════════════════════════════════
+   ORIGINAL WORK (IP)
+   
+   Reasoning: IP contributions are the "pride" items.
+   Listed as compact one-liners. No descriptions needed
+   at the top level — the title IS the contribution.
+   ═══════════════════════════════════════════ */
+
+.ip-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-s);
+  padding: 10px 14px;
+  background: var(--bg-input);
+  border-radius: var(--radius-xs);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  border-left: 3px solid var(--accent);
+}
+
+.ip-number {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+
+/* ═══════════════════════════════════════════
+   CAPABILITY GROWTH
+   
+   Reasoning: Horizontal bars are the fastest way to compare
+   5 values. The threshold line at 60 creates an instant 
+   visual: "am I above or below?" — no reading required.
+   Green = above, amber = near, red = gap.
+   ═══════════════════════════════════════════ */
+
+.axis-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.axis-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 36px;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+.axis-label {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.axis-bar-wrap {
+  position: relative;
+  height: 10px;
+  background: var(--bg-input);
+  border-radius: 100px;
+  overflow: visible;
+}
+
+.axis-bar {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.axis-bar.above { background: var(--green); }
+.axis-bar.near { background: var(--amber); }
+.axis-bar.below { background: var(--red); }
+
+/* Threshold marker at 60% */
+.axis-threshold {
+  position: absolute;
+  left: 60%;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  background: var(--text-muted);
+  opacity: 0.5;
+  border-radius: 1px;
+  z-index: 2;
+}
+
+.axis-score {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: right;
+}
+.axis-score.above { color: var(--green); }
+.axis-score.near { color: var(--amber); }
+.axis-score.below { color: var(--red); }
+
+
+/* ═══════════════════════════════════════════
+   KPI TARGETS
+   
+   Reasoning: Target vs actual is a comparison task.
+   Visual inline bar + hit/miss label makes scanning instant.
+   No need for a table — just rows with clear status.
+   ═══════════════════════════════════════════ */
+
+.kpi-summary {
+  font-size: 0.85rem;
+}
+.kpi-hit { color: var(--green); font-weight: 700; }
+.kpi-hit-label { color: var(--green); font-weight: 500; }
+.kpi-miss { color: var(--red); font-weight: 700; }
+.kpi-miss-label { color: var(--red); font-weight: 500; }
+.kpi-sep { color: var(--text-muted); margin: 0 6px; }
+
+.kpi-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-s);
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--bg-input);
+  border-radius: var(--radius-xs);
+}
+
+.kpi-label {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.kpi-values {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+}
+
+.kpi-actual {
+  font-weight: 700;
+}
+.kpi-target-val {
+  color: var(--text-muted);
+}
+
+.kpi-status-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.kpi-status-tag.hit {
+  background: var(--green-dim);
+  color: var(--green);
+}
+.kpi-status-tag.miss {
+  background: var(--red-dim);
+  color: var(--red);
+}
+.kpi-status-tag.partial {
+  background: var(--amber-dim);
+  color: var(--amber);
+}
+.kpi-status-tag.pending {
+  background: rgba(255,255,255,0.06);
+  color: var(--text-muted);
+}
+
+
+/* ═══════════════════════════════════════════
+   CHALLENGES (CONSTRAINTS)
+   
+   Reasoning: "Constraint" is internal jargon — renamed to
+   "Challenges." Each item is compact with a type badge.
+   Resolved = dimmed, Open = highlighted. This makes 
+   active issues jump out immediately while showing 
+   resolution context without being a "complaint form."
+   ═══════════════════════════════════════════ */
+
+.constraint-summary {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+.cs-resolved { color: var(--green); font-weight: 700; }
+.cs-open { color: var(--amber); font-weight: 700; }
+.cs-rate { color: var(--cyan); font-weight: 700; }
+
+.constraint-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.constraint-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-s);
+  padding: 10px 14px;
+  background: var(--bg-input);
+  border-radius: var(--radius-xs);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  transition: opacity 0.2s;
+}
+
+.constraint-item.resolved {
+  opacity: 0.55;
+}
+
+.constraint-type-badge {
+  flex-shrink: 0;
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.06);
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.constraint-text {
+  flex: 1;
+  color: var(--text-secondary);
+}
+
+.constraint-status-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 5px;
+}
+.constraint-status-dot.resolved { background: var(--green); }
+.constraint-status-dot.open { background: var(--amber); }
+
+
+/* ═══════════════════════════════════════════
+   CAREER PATH (TRAJECTORY)
+   
+   Reasoning: A horizontal runway is a natural metaphor 
+   for "where you are on a journey." Nodes show past,
+   current, and future. Gap drivers below tell you 
+   what's between you and the next level — actionable.
+   ═══════════════════════════════════════════ */
+
+.card-career {
+  background: linear-gradient(180deg, var(--bg-card) 0%, rgba(108, 138, 255, 0.04) 100%);
+  border: 1px solid rgba(108, 138, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-career .card-title {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.runway {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  padding: var(--space-l) 0;
+}
+
+.runway-line {
+  flex: 1;
+  height: 3px;
+  background: var(--border);
+  position: relative;
+}
+.runway-line.completed {
+  background: var(--accent);
+}
+.runway-line.projected {
+  background: var(--border);
+  background-image: repeating-linear-gradient(
+    90deg, var(--accent), var(--accent) 6px, transparent 6px, transparent 12px
+  );
+}
+
+.runway-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  z-index: 2;
+}
+
+.runway-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 3px solid var(--text-muted);
+  transition: all 0.3s;
+}
+.runway-dot.achieved {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.runway-dot.current {
+  background: var(--bg-card);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-dim), 0 0 12px rgba(108, 138, 255, 0.3);
+}
+.runway-dot.projected {
+  background: var(--bg-card);
+  border-color: var(--text-muted);
+  border-style: dashed;
+}
+
+.runway-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.runway-date {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+.runway-node.current .runway-label {
+  color: var(--accent);
+}
+
+.career-detail {
+  margin-top: var(--space-m);
+}
+
+.career-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gap-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  padding: 8px 12px;
+  background: var(--bg-input);
+  border-radius: var(--radius-xs);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.gap-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+}
+.gap-icon.cleared {
+  background: var(--green-dim);
+  color: var(--green);
+}
+.gap-icon.gap {
+  background: var(--amber-dim);
+  color: var(--amber);
+}
+
+
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+
+.portfolio-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-l) 0;
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-l);
+}
+
+.uid {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.gen-date {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.card {
+  animation: fadeInUp 0.5s ease-out both;
+}
+.card:nth-child(3) { animation-delay: 0.08s; }
+.card:nth-child(4) { animation-delay: 0.12s; }
+.card:nth-child(5) { animation-delay: 0.16s; }
+.card:nth-child(6) { animation-delay: 0.20s; }
+.card:nth-child(7) { animation-delay: 0.24s; }
+.card:nth-child(8) { animation-delay: 0.28s; }
+
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 600px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-m);
+    padding: var(--space-l) var(--space-m);
+  }
+
+  .hero-signal {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-m);
+    width: 100%;
+  }
+
+  .score-ring {
+    width: 72px;
+    height: 72px;
+  }
+
+  .ring-number {
+    font-size: 1.35rem;
+  }
+
+  .signal-meta {
+    align-items: flex-start;
+  }
+
+  .axis-row {
+    grid-template-columns: 90px 1fr 32px;
+  }
+  
+  .hero-role {
+    white-space: normal;
+  }
+}
