@@ -52,10 +52,9 @@ Renamed "Constraints" to **"Challenges"**. It tracks an active resolution rate (
 
 ### 4. Jargon Elimination (Portability)
 All platform jargon has been translated to be universally understandable:
-* `IP Commits` ➔ **Original Intellectual Contributions**
-* `Frameworks` ➔ **Methodological Applications**
-* `Processes` ➔ **Operational Workflows Followed**
-* `Rituals` ➔ **Team Collaboration & Rituals**
-* `QA Pending` ➔ **Awaiting Final Review**
+* `IP Commits` ➔ **Original Work**
+* `Rituals` ➔ **Engagement**
+* `Constraints` ➔ **Challenges**
+* `QA Pending` ➔ **Awaiting Review**
 * `V2 / V3` ➔ **Manager / Program Lead**
 * The **UID** is prominently displayed as a permanent credential.
