@@ -136,7 +136,7 @@ Every card in the redesigned UI maps directly to the `mock-portfolio-data.json` 
 > Moving down, I organized the page into a logical narrative. 
 > * **Contribution Card (Delivered):** Shows that he completed 16 of 20 deliverables. It has a progress bar for visual tracking, a clear status breakdown, and an expandable list of deliverables for audit proof.
 > * **Original Work:** Highlights his 7 original knowledge commits, including his quality SOP that was mandated across all facilities.
-> * **Growth Profile:** Clearly shows his 5 capability axes. The visual threshold line at 60 makes his two development gaps immediately clear: Frameworks (52) and Processes (58).
+> * **Growth Profile:** Clearly shows his 6 capability dimensions. The visual threshold line at 60 makes his two development gaps immediately clear: Frameworks (52) and Processes (58).
 > * **Targets (KPIs):** Holds him accountable to his goals, showing that he hit 3 targets but missed 2 due to equipment failures.
 > * **Challenges:** Reframes his blockers. It focuses on his 62% resolution rate and dims resolved items to highlight the open supervisor vacancy.
 > * **Career Path:** Concludes the pitch. It uses a runway timeline to show his trajectory and lists his specific capability gaps as actionable milestones he must clear to achieve V3.
@@ -197,7 +197,7 @@ Here is the exact explanation of every element on Rajan's page, written in plain
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
-│ 5. Growth Profile Card: 5 Capability Axes                              │
+│ 5. Growth Profile Card: 6 Capability Dimensions                        │
 │    Progress Bars: Delivery (80), IP (74), KPI (68), Engagement (85)     │
 │                   Frameworks (52) [Warning], Processes (58) [Warning]  │
 │    Baseline: 60 Goal Threshold Line                                    │
